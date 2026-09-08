@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Unit 10 · Vocabulary Worksheet — Changing Fashions</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    margin:0;padding:0;background:#f6ede2;color:#332a22;line-height:1.5;}
+  header{background:linear-gradient(135deg,#e8843c,#c85a2a);color:#fff;padding:22px 18px 18px;}
+  header h1{margin:0;font-size:1.5rem;}
+  header p{margin:6px 0 0;opacity:.95;font-size:.95rem;}
+  main{padding:16px;max-width:640px;margin:0 auto;}
+  .card{background:#fff;border-radius:16px;padding:18px;margin-bottom:16px;
+    box-shadow:0 4px 14px rgba(0,0,0,.08);}
+  .card h2{margin:0 0 4px;font-size:1.15rem;color:#c85a2a;display:flex;align-items:center;gap:8px;}
+  .card h3{margin:0 0 4px;font-size:1.05rem;color:#332a22;}
+  .hint{color:#8a776a;font-size:.85rem;margin:4px 0 12px;}
+  .badge{background:#c85a2a;color:#fff;border-radius:20px;font-size:.75rem;padding:2px 9px;}
+  label.q{display:block;background:#fbf3ea;border:1px solid #e9d8c6;border-radius:10px;
+    padding:10px 12px;margin-bottom:10px;}
+  label.q .num{font-weight:700;color:#c85a2a;}
+  select{width:100%;padding:9px;border-radius:8px;border:1.5px solid #d9c3ab;
+    background:#fff;font-size:1rem;margin-top:6px;color:#332a22;}
+  button{background:#c85a2a;color:#fff;border:none;border-radius:10px;padding:12px 18px;
+    font-size:1rem;font-weight:700;cursor:pointer;width:100%;margin-top:8px;}
+  button:active{opacity:.8;}
+  button.sec{background:#5a4a3c;}
+  .score{text-align:center;font-size:1.1rem;margin:6px 0;}
+  .result{display:none;margin-top:12px;padding:12px;border-radius:10px;font-size:.95rem;}
+  .good{background:#e6f4e6;color:#2c7a2c;border:1.5px solid #9fd29f;}
+  .bad{background:#fbe9e7;color:#b03a2e;border:1.5px solid #efb3ad;}
+  .msg{background:#eef3fb;color:#2b4a7a;border-left:4px solid #3b6bc0;padding:10px 12px;border-radius:8px;}
+  /* bins */
+  .bins{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+  .bin{background:#fbf3ea;border:2px dashed #d9c3ab;border-radius:12px;padding:10px;min-height:60px;}
+  .bin h4{margin:0 0 6px;font-size:.9rem;color:#c85a2a;}
+  .wordrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;}
+  .word{background:#fff;border:1.5px solid #d9c3ab;border-radius:20px;padding:7px 12px;
+    font-size:.9rem;cursor:pointer;color:#332a22;user-select:none;}
+  .word.sel{background:#c85a2a;color:#fff;border-color:#c85a2a;}
+  .chip{display:inline-block;background:#f0e6da;border-radius:14px;padding:3px 9px;
+    font-size:.82rem;margin:3px;}
+  .chip.blank{background:#fff;border:1.5px dashed #c85a2a;color:#c85a2a;font-weight:700;}
+  /* flip cards */
+  .flipgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+  .flip{background:#e8843c;color:#fff;border-radius:12px;padding:14px;min-height:66px;
+    cursor:pointer;font-weight:700;display:flex;align-items:center;justify-content:center;text-align:center;}
+  .flip.flipped{background:#fff;color:#332a22;border:2px solid #e8843c;font-weight:600;font-size:.85rem;}
+  .note{font-size:.82rem;color:#8a776a;margin-top:8px;}
+</style>
+</head>
+<body>
+<header>
+  <h1>🧥 Changing Fashions — Vocabulary Worksheet</h1>
+  <p>Unit 10 · Book 2, pages 104–105 · Tap to answer, press <b>CHECK</b> at the end.</p>
+</header>
+<main>
+
+  <!-- SECTION 1: VERBS -->
+  <section class="card">
+    <h2><span class="badge">1</span> Choose the right verb</h2>
+    <p class="hint">Word box: <b>fit · match · look good · try on · wear</b></p>
+    <label class="q"><span class="num">1.</span> I'm going to _____ these jeans. I'm not sure about the size.
+      <select data-a="try on"><option value="">-- choose --</option><option>fit</option><option>match</option><option>look good</option><option>try on</option><option>wear</option></select></label>
+    <label class="q"><span class="num">2.</span> This T-shirt doesn't _____ this skirt.
+      <select data-a="match"><option value="">-- choose --</option><option>fit</option><option>match</option><option>look good</option><option>try on</option><option>wear</option></select></label>
+    <label class="q"><span class="num">3.</span> These shorts _____ really well. They're exactly the right size.
+      <select data-a="fit"><option value="">-- choose --</option><option>fit</option><option>match</option><option>look good</option><option>try on</option><option>wear</option></select></label>
+    <label class="q"><span class="num">4.</span> I never _____ sneakers.
+      <select data-a="wear"><option value="">-- choose --</option><option>fit</option><option>match</option><option>look good</option><option>try on</option><option>wear</option></select></label>
+    <label class="q"><span class="num">5.</span> These pants don't _____ on me. They're too outdated.
+      <select data-a="look good"><option value="">-- choose --</option><option>fit</option><option>match</option><option>look good</option><option>try on</option><option>wear</option></select></label>
+  </section>
+
+  <!-- SECTION 2: BINS -->
+  <section class="card">
+    <h2><span class="badge">2</span> Sort the clothes words</h2>
+    <p class="hint">Tap a word, then tap the box it belongs to. (Every word goes in ONE box.)</p>
+    <div class="bins">
+      <div class="bin" data-cat="parts"><h4>Parts of clothes</h4><div class="chipbox" id="bin-parts"></div></div>
+      <div class="bin" data-cat="materials"><h4>Materials</h4><div class="chipbox" id="bin-materials"></div></div>
+      <div class="bin" data-cat="look"><h4>Look and fit</h4><div class="chipbox" id="bin-look"></div></div>
+    </div>
+    <div class="wordrow" id="wordrow"></div>
+  </section>
+
+  <!-- SECTION 3: BLANKS -->
+  <section class="card">
+    <h2><span class="badge">3</span> Complete the sentences</h2>
+    <p class="hint">Use words from Section 2 word bank (parts / materials / look &amp; fit).</p>
+    <label class="q">1. Men in the 1970s wore shirts with huge <span class="chip blank">_____</span> round the neck.
+      <select data-a="collars"><option value="">-- choose --</option><option>collars</option><option>sleeves</option><option>pockets</option><option>buttons</option></select></label>
+    <label class="q">2. These trousers are too <span class="chip blank">_____</span> — I can't move my legs. They're far too tight.
+      <select data-a="tight"><option value="">-- choose --</option><option>tight</option><option>patterned</option><option>baggy</option><option>plain</option></select></label>
+    <label class="q">3. A leather <span class="chip blank">_____</span> is perfect with jeans and a denim jacket.
+      <select data-a="belt"><option value="">-- choose --</option><option>belt</option><option>collar</option><option>seam</option><option>hem</option></select></label>
+    <label class="q">4. My favourite material is <span class="chip blank">_____</span> — the blue, strong cloth that jeans are made of.
+      <select data-a="denim"><option value="">-- choose --</option><option>denim</option><option>silk</option><option>wool</option><option>cotton</option></select></label>
+    <label class="q">5. The queen wore a <span class="chip blank">_____</span> dress with long, shiny sleeves.
+      <select data-a="silk"><option value="">-- choose --</option><option>silk</option><option>denim</option><option>leather</option><option>wool</option></select></label>
+  </section>
+
+  <!-- SECTION 4: FLIP GLOSSARY -->
+  <section class="card">
+    <h2><span class="badge">4</span> Flip glossary — tap a card</h2>
+    <div class="flipgrid">
+      <div class="flip" onclick="this.classList.toggle('flipped')">fit</div>
+      <div class="flip" onclick="this.classList.toggle('flipped')">match</div>
+      <div class="flip" onclick="this.classList.toggle('flipped')">look good on</div>
+      <div class="flip" onclick="this.classList.toggle('flipped')">try on</div>
+      <div class="flip" onclick="this.classList.toggle('flipped')">patterned</div>
+      <div class="flip" onclick="this.classList.toggle('flipped')">baggy</div>
+      <div class="flip" onclick="this.classList.toggle('flipped')">plain</div>
+      <div class="flip" onclick="this.classList.toggle('flipped')">denim</div>
+    </div>
+    <button class="sec" onclick="flipAll()">Flip all → see meanings</button>
+    <div id="flipkey" style="display:none;margin-top:10px;background:#fff8f2;padding:12px;border-radius:10px;font-size:.85rem;">
+      <b>fit</b> = the right size for you · <b>match</b> = go together (colours) ·
+      <b>look good on</b> = suit a person · <b>try on</b> = test before buying ·
+      <b>patterned</b> = has a design/print · <b>baggy</b> = very loose, not tight ·
+      <b>plain</b> = no pattern, simple · <b>denim</b> = the cloth jeans are made of.
+    </div>
+  </section>
+
+  <!-- CHECK -->
+  <section class="card">
+    <h2>🎯 All done?</h2>
+    <p class="hint">Press CHECK to see your score for Sections 1, 2 and 3.</p>
+    <div class="score" id="scorebox"></div>
+    <div class="result" id="resultbox"></div>
+    <button onclick="checkAll()">✔ CHECK MY ANSWERS</button>
+    <button class="sec" onclick="location.reload()">↻ Reset</button>
+  </section>
+
+  <p class="note" style="text-align:center;margin-bottom:30px;">Unit 10 · Changing Fashions · Created for your phone 📱</p>
+</main>
+
+<script>
+  // ---- SECTION 1 & 3 answers are on <select data-a=...> ----
+  // ---- SECTION 2 bins ----
+  const WORDS = [
+    ["collar","parts"],["cuff","parts"],["sleeve","parts"],["pocket","parts"],
+    ["button","parts"],["belt","parts"],["hem","parts"],["wristband","parts"],
+    ["silk","materials"],["cotton","materials"],["denim","materials"],
+    ["leather","materials"],["wool","materials"],["organic cotton","materials"],
+    ["patterned","look"],["plain","look"],["tight","look"],["baggy","look"],
+    ["loose","look"],["big","look"],["small","look"],["bright","look"]
+  ];
+  let selectedWord = null;
+  const wordrow = document.getElementById('wordrow');
+  WORDS.forEach(function(w,i){
+    const el=document.createElement('span');
+    el.className='word'; el.textContent=w[0]; el.dataset.cat=w[1]; el.dataset.idx=i;
+    el.onclick=function(){
+      if(selectedWord) selectedWord.classList.remove('sel');
+      selectedWord=el; el.classList.add('sel');
+    };
+    wordrow.appendChild(el);
+  });
+  const bins={parts:[],materials:[],look:[]};
+  document.querySelectorAll('.bin').forEach(function(bin){
+    bin.addEventListener('click',function(){
+      if(!selectedWord){alert('Tap a word first!');return;}
+      const cat=bin.dataset.cat; const wordTxt=selectedWord.textContent;
+      if(bins[cat].indexOf(wordTxt)>-1){alert(wordTxt+' is already there!');return;}
+      bins[cat].push(wordTxt);
+      const chip=document.createElement('span'); chip.className='chip'; chip.textContent=wordTxt;
+      document.getElementById('bin-'+cat).appendChild(chip);
+      selectedWord.remove(); selectedWord=null;
+    });
+  });
+
+  function flipAll(){
+    document.querySelectorAll('.flip').forEach(function(c){c.classList.add('flipped');});
+    document.getElementById('flipkey').style.display='block';
+  }
+
+  function checkAll(){
+    let s1=0,t1=0;
+    document.querySelectorAll('select[data-a]').forEach(function(sel){
+      t1++;
+      if(sel.value===sel.dataset.a){s1++;}
+    });
+    // bins
+    let s2=0,t2=0;
+    WORDS.forEach(function(w){
+      t2++;
+      if(bins[w[1]].indexOf(w[0])>-1){s2++;}
+    });
+    const wrong2 = WORDS.filter(function(w){return bins[w[1]].indexOf(w[0])<0;}).map(function(w){return w[0];});
+    const total=t1+t2;
+    const pct=Math.round(((s1+s2)/total)*100);
+    const box=document.getElementById('scorebox');
+    box.innerHTML='Sections 1 &amp; 3: <b>'+s1+'/'+t1+'</b> &nbsp;·&nbsp; Section 2 (sort): <b>'+s2+'/'+t2+'</b><br><br><b>SCORE: '+pct+'%</b>';
+    const rb=document.getElementById('resultbox');
+    rb.style.display='block';
+    let msg;
+    if(wrong2.length){ rb.innerHTML+= '<br><b>Not sorted yet / misplaced so far:</b> '+wrong2.join(', '); }
+    if(pct>=90){rb.className='result good';rb.innerHTML='🌟 Amazing! You are a real fashion expert.';}
+    else if(pct>=70){rb.className='result good';rb.innerHTML='👍 Great work! Check the ones you missed and try again.';}
+    else {rb.className='result bad';rb.innerHTML='💪 Keep going! Use the flip glossary, then press CHECK again.';}
+    rb.style.display='block';
+    // highlight correct/incorrect selects
+    document.querySelectorAll('select[data-a]').forEach(function(sel){
+      sel.style.borderColor=(sel.value===sel.dataset.a)?'#2c7a2c':'#b03a2e';
+    });
+  }
+</script>
+</body>
+</html>

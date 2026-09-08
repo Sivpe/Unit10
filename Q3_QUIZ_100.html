@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#2b4a7a">
+<title>Unit 10 · Changing Fashions — 100-Point Quiz</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{margin:0;padding:0;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:#eef1f6;color:#28323f;line-height:1.5;}
+  .topbar{position:sticky;top:0;z-index:50;background:#2b4a7a;color:#fff;padding:10px 12px;
+    display:flex;align-items:center;gap:10px;box-shadow:0 2px 8px rgba(0,0,0,.15);}
+  .topbar .t{flex:1;min-width:0;}
+  .topbar .t h1{margin:0;font-size:1rem;line-height:1.2;}
+  .topbar .t small{opacity:.85;font-size:.75rem;}
+  .timer{background:#0e2a4d;border-radius:10px;padding:6px 12px;text-align:center;min-width:64px;}
+  .timer .big{font-size:1.25rem;font-weight:800;font-variant-numeric:tabular-nums;}
+  .timer .cap{font-size:.6rem;letter-spacing:1px;opacity:.8;text-transform:uppercase;}
+  .timer.low{background:#a52a2a;animation:pulse 1s infinite;}
+  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+  .btn{background:#fff;color:#2b4a7a;border:none;border-radius:9px;padding:8px 11px;font-weight:700;
+    font-size:.8rem;cursor:pointer;white-space:nowrap;}
+  .btn:active{opacity:.8;}
+  .welcome{position:fixed;inset:0;background:linear-gradient(150deg,#2b4a7a,#3b6bc0);z-index:100;
+    display:flex;align-items:center;justify-content:center;padding:22px;overflow:auto;}
+  .welcome .box{background:#fff;border-radius:18px;max-width:430px;width:100%;padding:24px;box-shadow:0 10px 40px rgba(0,0,0,.3);}
+  .welcome h2{margin:0 0 4px;color:#2b4a7a;font-size:1.4rem;}
+  .welcome p{color:#5a6672;margin:4px 0 14px;font-size:.9rem;}
+  .welcome label{display:block;font-size:.82rem;font-weight:700;color:#2b4a7a;margin-top:10px;}
+  .welcome input{width:100%;padding:12px;border-radius:10px;border:1.5px solid #c8d2e2;font-size:1rem;margin-top:5px;}
+  #startBtn{margin-top:18px;background:#1c7a3f;color:#fff;padding:14px;font-size:1.1rem;border-radius:12px;border:none;width:100%;font-weight:800;}
+  .warnteam{display:flex;gap:8px;margin-top:14px;font-size:.72rem;color:#8a97a5;flex-wrap:wrap;}
+  main{max-width:640px;margin:0 auto;padding:12px 12px 90px;}
+  .card{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 3px 12px rgba(0,0,0,.06);}
+  .card h2{margin:0 0 6px;font-size:1.05rem;color:#2b4a7a;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+  .bnum{background:#2b4a7a;color:#fff;border-radius:20px;font-size:.7rem;padding:2px 9px;font-weight:800;}
+  .pts{background:#c85a2a;color:#fff;border-radius:20px;font-size:.7rem;padding:2px 8px;font-weight:800;margin-left:auto;}
+  .inst{background:#eaf1fb;border-left:4px solid #3b6bc0;padding:9px 11px;border-radius:8px;
+    font-size:.82rem;color:#28466f;margin:8px 0 12px;}
+  .inst b{color:#2b4a7a;}
+  .q{background:#f7f9fc;border:1.5px solid #dfe5ee;border-radius:11px;padding:11px 12px;margin-bottom:10px;}
+  .q .t{font-size:.95rem;margin-bottom:4px;}
+  .q .num{font-weight:800;color:#2b4a7a;}
+  select{width:100%;padding:10px;border-radius:9px;border:1.5px solid #c8d2e2;background:#fff;font-size:.98rem;margin-top:6px;color:#28323f;}
+  .opt{display:flex;flex-direction:column;gap:6px;margin-top:8px;}
+  .opt button{text-align:left;background:#eef2f8;border:1.5px solid #d3dce9;border-radius:9px;
+    padding:10px 11px;font-size:.92rem;cursor:pointer;color:#28323f;width:100%;}
+  .opt button.sel{background:#2b4a7a;color:#fff;border-color:#2b4a7a;}
+  .bins{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+  .bin{background:#f7f9fc;border:2px dashed #c8d2e2;border-radius:11px;padding:9px;min-height:52px;}
+  .bin h4{margin:0 0 5px;font-size:.86rem;color:#2b4a7a;}
+  .bin.correct{background:#e6f4e6;border-color:#7cc47c;}
+  .wordrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;}
+  .word{background:#fff;border:1.5px solid #c8d2e2;border-radius:20px;padding:7px 12px;font-size:.88rem;
+    cursor:pointer;user-select:none;-webkit-user-select:none;}
+  .word.sel{background:#2b4a7a;color:#fff;border-color:#2b4a7a;}
+  .chip{display:inline-block;background:#fff;border:1.5px solid #d3dce9;border-radius:14px;padding:3px 9px;font-size:.8rem;margin:2px;}
+  /* reading box */
+  .readtoggle{width:100%;background:#f2f6fc;border:2px solid #3b6bc0;color:#2b4a7a;border-radius:12px;
+    padding:12px;font-size:1rem;font-weight:800;cursor:pointer;}
+  .passage{background:#f7f9fc;border:1px solid #dfe5ee;border-radius:12px;padding:14px;margin-top:12px;display:none;}
+  .dec{background:#2b4a7a;color:#fff;display:inline-block;border-radius:8px;padding:2px 12px;
+    font-weight:700;font-size:.9rem;margin:12px 0 4px;}
+  .dec:first-child{margin-top:0;}
+  .passage p{margin:6px 0;font-size:.98rem;}
+  .passage b{color:#c85a2a;}
+  /* submit bar */
+  .submitbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:#fff;padding:10px 12px calc(10px + env(safe-area-inset-bottom));
+    box-shadow:0 -2px 14px rgba(0,0,0,.12);}
+  .submitbar button{width:100%;background:#1c7a3f;color:#fff;border:none;border-radius:12px;padding:15px;
+    font-size:1.05rem;font-weight:800;cursor:pointer;}
+  /* result modal */
+  #resultModal{position:fixed;inset:0;background:rgba(20,35,55,.7);z-index:80;display:none;align-items:center;justify-content:center;padding:20px;overflow:auto;}
+  #resultModal .box{background:#fff;border-radius:18px;max-width:440px;width:100%;padding:24px;text-align:center;margin:auto;}
+  #resultModal .g{font-size:2.4rem;}
+  #resultModal h2{margin:6px 0;color:#2b4a7a;}
+  #resultModal .scorebig{font-size:2.6rem;font-weight:900;color:#1c7a3f;}
+  #resultModal p{color:#5a6672;font-size:.9rem;margin:6px 0;}
+  #resultModal .sum{text-align:left;background:#f7f9fc;border-radius:10px;padding:10px 12px;font-size:.8rem;margin:12px 0;color:#28466f;}
+  #resultModal button{margin-top:8px;background:#2b4a7a;color:#fff;border:none;border-radius:10px;padding:12px;width:100%;font-weight:800;font-size:.95rem;cursor:pointer;}
+  #resultModal .gbtn{background:#1c7a3f;}
+  /* review */
+  #review{display:none;}
+  .rv{background:#f7f9fc;border:1.5px solid #dfe5ee;border-radius:11px;padding:10px 12px;margin-bottom:8px;}
+  .rv .wrong{border-color:#eaa7a0;background:#fdf0ef;}
+  .rv .good2{border-color:#8fd08f;background:#eefaf0;}
+  .rv .row{display:flex;justify-content:space-between;gap:8px;font-size:.88rem;margin-top:4px;flex-wrap:wrap;}
+  .rv .yours{font-weight:700;}
+  .rv .yours.ok{color:#1c7a3f;}
+  .rv .yours.no{color:#b03a2e;text-decoration:line-through;}
+  .rv .key{color:#1c7a3f;font-weight:700;}
+  .rvmark{font-weight:800;}
+  .rvmark.ok{color:#1c7a3f;} .rvmark.no{color:#b03a2e;}
+  .teachbar{position:fixed;top:0;left:0;right:0;z-index:60;background:#1c7a3f;color:#fff;padding:8px 12px;
+    display:none;font-weight:700;font-size:.85rem;text-align:center;}
+  .backtop{background:#2b4a7a;color:#fff;width:100%;padding:13px;border-radius:12px;border:none;font-weight:800;font-size:1rem;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<div class="teachbar" id="teachbar">🔓 TEACHER MODE ON — correct answers shown &amp; full key below</div>
+
+<!-- STICKY HEADER -->
+<div class="topbar">
+  <button class="btn" id="teacherBtn" onclick="teacherLogin()">🔒 Teacher</button>
+  <div class="t">
+    <h1>Unit 10 · Changing Fashions</h1>
+    <small id="subTitle">100 pts · 30 min</small>
+  </div>
+  <div class="timer" id="timerBox">
+    <div class="cap">Time</div>
+    <div class="big" id="timer">30:00</div>
+  </div>
+</div>
+
+<!-- WELCOME -->
+<div class="welcome" id="welcome">
+  <div class="box">
+    <h2>🧥 Changing Fashions Quiz</h2>
+    <p>Unit 10 · <b>100 points</b> · <b>30 minutes</b>. Names are sent to your teacher's Google Sheet.</p>
+    <label>Your name <span style="color:#c0392b">*</span></label>
+    <input type="text" id="inName" placeholder="e.g. Sokha">
+    <label>Class</label>
+    <input type="text" id="inClass" placeholder="e.g. Grade 8 / A">
+    <button id="startBtn" onclick="startQuiz()">🚀 START QUIZ</button>
+    <div class="warnteam">
+      <span>⏱ 30:00 timer</span><span>•</span><span>💯 100 pts</span><span>•</span>
+      <span>📖 you can open the reading text</span>
+    </div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ===== SECTION 1 : VERBS (NEW) ===== -->
+  <section class="card" id="s1">
+    <h2><span class="bnum">1</span> Vocab — verbs for clothes <span class="pts">10 pts</span></h2>
+    <div class="inst">💡 <b>How to answer:</b> Choose the <b>1 correct verb</b> for each new sentence.
+    Word bank: <b>fit</b> (right size) · <b>match</b> (colours go together) · <b>try on</b> (test before buying) ·
+    <b>wear</b> (have on now) · <b>look good on</b> (suits a person). <b>5 questions = 10 pts.</b></div>
+
+    <div class="q"><div class="t"><span class="num">1.</span> These jeans are the wrong size — they don't ______ me.</div>
+      <select data-a="fit"><option value="">-- choose the verb --</option><option>fit</option><option>match</option><option>try on</option><option>wear</option><option>look good on</option></select></div>
+    <div class="q"><div class="t"><span class="num">2.</span> My red scarf doesn't ______ my new blue coat — they clash.</div>
+      <select data-a="match"><option value="">-- choose the verb --</option><option>fit</option><option>match</option><option>try on</option><option>wear</option><option>look good on</option></select></div>
+    <div class="q"><div class="t"><span class="num">3.</span> Can I ______ this jacket on before I decide to buy it?</div>
+      <select data-a="try on"><option value="">-- choose the verb --</option><option>fit</option><option>match</option><option>try on</option><option>wear</option><option>look good on</option></select></div>
+    <div class="q"><div class="t"><span class="num">4.</span> In winter we usually ______ a scarf and gloves.</div>
+      <select data-a="wear"><option value="">-- choose the verb --</option><option>fit</option><option>match</option><option>try on</option><option>wear</option><option>look good on</option></select></div>
+    <div class="q"><div class="t"><span class="num">5.</span> Those sunglasses are your style — I think they will really ______ you!</div>
+      <select data-a="look good on"><option value="">-- choose the verb --</option><option>fit</option><option>match</option><option>try on</option><option>wear</option><option>look good on</option></select></div>
+  </section>
+
+  <!-- ===== SECTION 2 : SORT ===== -->
+  <section class="card" id="s2">
+    <h2><span class="bnum">2</span> Vocab — sort the words <span class="pts">30 pts</span></h2>
+    <div class="inst">💡 <b>How to answer:</b> This is a <b>new</b> fashion-show task. <b>① Tap</b> a word in the bank,
+    <b>② tap</b> the box it belongs to (Parts / Materials / Look &amp; fit). The word moves in. <b>Tap a placed word to
+    send it back</b> if you change your mind. Put <b>every</b> word in <b>one</b> box. <b>16 words = 30 pts.</b></div>
+    <div class="bins">
+      <div class="bin" data-cat="parts"><h4>👕 Parts of clothes</h4><div class="chipbox" id="bin-parts"></div></div>
+      <div class="bin" data-cat="materials"><h4>🧵 Materials</h4><div class="chipbox" id="bin-materials"></div></div>
+      <div class="bin" data-cat="look"><h4>✨ Look and fit</h4><div class="chipbox" id="bin-look"></div></div>
+    </div>
+    <div class="wordrow" id="wordrow"></div>
+  </section>
+
+  <!-- ===== SECTION 3 : VOCAB GAPS (NEW) ===== -->
+  <section class="card" id="s3">
+    <h2><span class="bnum">3</span> Vocab — new sentences <span class="pts">10 pts</span></h2>
+    <div class="inst">💡 <b>How to answer:</b> New sentences! Choose the <b>1 word</b> that fits best. These test the
+    <b>parts of clothes, materials</b> and <b>look &amp; fit</b> words. <b>5 questions = 10 pts.</b></div>
+    <div class="q"><div class="t"><span class="num">6.</span> He wears a strong brown ______ to hold his jeans up.</div>
+      <select data-a="belt"><option value="">-- choose --</option><option>belt</option><option>collar</option><option>hem</option><option>pocket</option></select></div>
+    <div class="q"><div class="t"><span class="num">7.</span> My shoes are made of soft brown ______, not plastic.</div>
+      <select data-a="leather"><option value="">-- choose --</option><option>leather</option><option>silk</option><option>cotton</option><option>denim</option></select></div>
+    <div class="q"><div class="t"><span class="num">8.</span> That scarf is ______ — smooth and shiny, like water.</div>
+      <select data-a="silk"><option value="">-- choose --</option><option>silk</option><option>wool</option><option>denim</option><option>leather</option></select></div>
+    <div class="q"><div class="t"><span class="num">9.</span> He wears his jeans very ______ — they hang loose over his shoes.</div>
+      <select data-a="baggy"><option value="">-- choose --</option><option>baggy</option><option>tight</option><option>patterned</option><option>plain</option></select></div>
+    <div class="q"><div class="t"><span class="num">10.</span> This shirt is ______ — light blue with no print or pattern.</div>
+      <select data-a="plain"><option value="">-- choose --</option><option>plain</option><option>patterned</option><option>tight</option><option>baggy</option></select></div>
+  </section>
+
+  <!-- ===== READING BOX (NEW original text) ===== -->
+  <section class="card" id="readcard">
+    <h2><span class="bnum">📖</span> Reading text — "The Vintage Shop" (read before Q11–Q22)</h2>
+    <button class="readtoggle" onclick="toggleRead()" id="readBtn">▶ SHOW the reading text</button>
+    <div class="passage" id="passage">
+      <p>Sokha loves fashion, but not the new clothes in the mall. He goes to a small shop that sells old clothes — a <b>vintage</b> shop.</p>
+      <p>The owner, Uncle Dara, takes a red jacket off the shelf. "This is from the <b>1970s</b>," he says. In the 1970s, people wore bright colours and wide, <b>flared</b> trousers. The red jacket has a very <b>large collar</b> and it is made of thick <b>cotton</b>.</p>
+      <p>"And this green coat is from the <b>1980s</b>," he says. In the 1980s, fashion was louder. Young people wore <b>leather</b> jackets and shiny metal. This green coat has <b>shoulder pads</b> that make the shoulders look very wide.</p>
+      <p>"This pair of blue jeans is from the <b>1990s</b>," Uncle Dara says. In the 1990s, jeans were the most popular <b>clothes</b> in the world. They were simple and <b>comfortable</b>. Everyone — from children to grandparents — wore jeans every day.</p>
+      <p>Today, Sokha cares about nature. He likes clothes made of <b>organic cotton</b> because they are good for the planet. He buys <b>old</b> clothes instead of new ones. "New fashion is always expensive," he says. "I can look stylish and help the Earth at the same time."</p>
+      <p>Uncle Dara smiles. "Fashion changes every year," he says, "but a good jacket never goes out of <b>style</b>."</p>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4 : TRUE FALSE ===== -->
+  <section class="card" id="s4">
+    <h2><span class="bnum">4</span> Reading — True or False? <span class="pts">10 pts</span></h2>
+    <div class="inst">💡 <b>How to answer:</b> Read <b>"The Vintage Shop"</b> above, then tap <b>TRUE</b> if the sentence is correct or <b>FALSE</b> if it is wrong. <b>5 questions = 10 pts.</b></div>
+    <div id="tf"></div>
+  </section>
+
+  <!-- ===== SECTION 5 : GAP FILL (NEW) ===== -->
+  <section class="card" id="s5">
+    <h2><span class="bnum">5</span> Reading — complete the story <span class="pts">16 pts</span></h2>
+    <div class="inst">💡 <b>How to answer:</b> Use <b>"The Vintage Shop"</b> to choose the <b>1 word</b> that completes each sentence. <b>8 questions = 16 pts.</b></div>
+    <div class="q"><div class="t"><span class="num">11.</span> Sokha buys old clothes in a ______ shop.</div>
+      <select data-a="vintage"><option value="">-- choose --</option><option>vintage</option><option>shoe</option><option>modern</option><option>book</option></select></div>
+    <div class="q"><div class="t"><span class="num">12.</span> The red jacket from the 1970s has a very ______ collar.</div>
+      <select data-a="large"><option value="">-- choose --</option><option>thin</option><option>large</option><option>short</option><option>invisible</option></select></div>
+    <div class="q"><div class="t"><span class="num">13.</span> In the 1980s, the green coat had ______ that made the shoulders look wide.</div>
+      <select data-a="shoulder pads"><option value="">-- choose --</option><option>shoulder pads</option><option>tiny pockets</option><option>long belts</option><option>small buttons</option></select></div>
+    <div class="q"><div class="t"><span class="num">14.</span> In the 1990s, jeans were simple and ______.</div>
+      <select data-a="comfortable"><option value="">-- choose --</option><option>noisy</option><option>expensive</option><option>comfortable</option><option>broken</option></select></div>
+    <div class="q"><div class="t"><span class="num">15.</span> In the 1990s, jeans were the most popular ______ in the world.</div>
+      <select data-a="clothes"><option value="">-- choose --</option><option>food</option><option>song</option><option>clothes</option><option>car</option></select></div>
+    <div class="q"><div class="t"><span class="num">16.</span> Today, Sokha likes ______ cotton because it is good for the planet.</div>
+      <select data-a="organic"><option value="">-- choose --</option><option>plastic</option><option>organic</option><option>shiny</option><option>itchy</option></select></div>
+    <div class="q"><div class="t"><span class="num">17.</span> Sokha buys ______ clothes instead of new ones.</div>
+      <select data-a="old"><option value="">-- choose --</option><option>heavy</option><option>wet</option><option>old</option><option>expensive</option></select></div>
+    <div class="q"><div class="t"><span class="num">18.</span> Uncle Dara says a good jacket never goes out of ______.</div>
+      <select data-a="style"><option value="">-- choose --</option><option>style</option><option>town</option><option>school</option><option>bed</option></select></div>
+  </section>
+
+  <!-- ===== SECTION 6 : COMPREHENSION ===== -->
+  <section class="card" id="s6">
+    <h2><span class="bnum">6</span> Reading — comprehension <span class="pts">12 pts</span></h2>
+    <div class="inst">💡 <b>How to answer:</b> Tap the <b>ONE</b> best answer (A, B or C) based on the reading text.
+    <b>6 questions = 12 pts.</b></div>
+    <div id="mc"></div>
+  </section>
+
+  <!-- ===== SECTION 7 : WORD MATCH (NEW) ===== -->
+  <section class="card" id="s7">
+    <h2><span class="bnum">7</span> Reading vocab — word match <span class="pts">12 pts</span></h2>
+    <div class="inst">💡 <b>How to answer:</b> From <b>"The Vintage Shop"</b>, choose the word that matches each meaning. <b>4 questions = 12 pts.</b></div>
+    <div class="q"><div class="t"><span class="num">19.</span> A shop that sells old, second-hand clothes is a ______ shop.</div>
+      <select data-a="vintage"><option value="">-- choose --</option><option>vintage</option><option>bakery</option><option>stationery</option><option>pharmacy</option></select></div>
+    <div class="q"><div class="t"><span class="num">20.</span> A soft piece that makes a coat's shoulders look wide = ______.</div>
+      <select data-a="shoulder pads"><option value="">-- choose --</option><option>shoulder pads</option><option>fingertips</option><option>waistbands</option><option>sleeves</option></select></div>
+    <div class="q"><div class="t"><span class="num">21.</span> Cloth made in a way that is good for the planet = ______ cotton.</div>
+      <select data-a="organic"><option value="">-- choose --</option><option>organic</option><option>plastic</option><option>artificial</option><option>noisy</option></select></div>
+    <div class="q"><div class="t"><span class="num">22.</span> Something that "never goes out of ______" means it is always fashionable.</div>
+      <select data-a="style"><option value="">-- choose --</option><option>style</option><option>order</option><option>sight</option><option>reach</option></select></div>
+  </section>
+
+  <!-- ===== REVIEW (created after submit) ===== -->
+  <div id="review">
+    <button class="backtop" onclick="window.scrollTo(0,0)">⬆ Back to top</button>
+  </div>
+
+</main>
+
+<!-- SUBMIT BAR -->
+<div class="submitbar" id="submitbar" style="display:none;">
+  <button onclick="finishQuiz()">✅ FINISH &amp; SUBMIT MY ANSWERS</button>
+</div>
+
+<!-- RESULT MODAL -->
+<div id="resultModal">
+  <div class="box">
+    <div class="g" id="resEmoji">🎉</div>
+    <h2 id="resTitle">Finished!</h2>
+    <div class="scorebig" id="resScore">0</div>
+    <p id="resSub">points out of 100</p>
+    <div id="resSum" class="sum"></div>
+    <p id="resNote"></p>
+    <button class="gbtn" onclick="showReview()">🔍 See my answers &amp; the answer keys</button>
+    <button onclick="window.scrollTo(0,0)">↺ Back to my quiz</button>
+  </div>
+</div>
+
+<script>
+/* ================== CONFIG ================== */
+const GOOGLE_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxXZ8Q95MY0Q4aP_GUHWFPal1ZJ2dsNQ_ENoXkmRDCLpHR8zG-5aVZbt6F71YafayTHvw/exec";
+const TEACHER_PASSWORD = "8Cteacher";
+const TOTAL_MIN = 30;
+
+/* ================== STATE ================== */
+const state = { started:false, submitted:false, teacher:false, name:"", cls:"", sec:"0:00" };
+let selectedWord=null, elapsed=0, timerId=null;
+const bins = {parts:[], materials:[], look:[]};
+
+/* ================== READING BOX ================== */
+function toggleRead(){
+  const p=document.getElementById('passage');
+  const b=document.getElementById('readBtn');
+  const open = p.style.display==='block';
+  p.style.display = open?'none':'block';
+  b.textContent = open ? "▶ SHOW the reading text" : "🔽 HIDE the reading text";
+}
+
+/* ================== SORT ================== */
+const SORT_WORDS = [
+  ["collar","parts"],["cuff","parts"],["sleeve","parts"],["pocket","parts"],
+  ["button","parts"],["belt","parts"],["hem","parts"],
+  ["silk","materials"],["cotton","materials"],["denim","materials"],
+  ["leather","materials"],["wool","materials"],
+  ["patterned","look"],["plain","look"],["tight","look"],["baggy","look"]
+];
+function buildSort(){
+  const row=document.getElementById('wordrow');
+  SORT_WORDS.forEach(function(w){
+    const el=document.createElement('span');
+    el.className='word'; el.textContent=w[0]; el.dataset.cat=w[1]; el.dataset.word=w[0];
+    el.onclick=function(){ selectWord(el); };
+    row.appendChild(el);
+  });
+  document.querySelectorAll('.bin').forEach(function(bin){
+    bin.addEventListener('click',function(){ placeWord(bin); });
+  });
+}
+function selectWord(el){
+  if(selectedWord) selectedWord.classList.remove('sel');
+  selectedWord=el; el.classList.add('sel');
+}
+function placeWord(bin){
+  if(!state.started && !state.teacher){ alert("Press START first!"); return; }
+  if(!selectedWord){ alert("① Tap a word first, ② then tap a box."); return; }
+  const cat=bin.dataset.cat;
+  if(bins[cat].indexOf(selectedWord.dataset.word)>-1){ alert("That word is already in this box."); return; }
+  bins[cat].push(selectedWord.dataset.word);
+  addChip(cat, selectedWord.dataset.word);
+  selectedWord.remove(); selectedWord=null;
+}
+function addChip(cat, word){
+  const chip=document.createElement('span'); chip.className='chip'; chip.textContent=word;
+  chip.onclick=function(){
+    bins[cat]=bins[cat].filter(function(x){return x!==word;});
+    chip.remove();
+    const el=document.createElement('span'); el.className='word'; el.textContent=word;
+    el.dataset.cat=cat; el.dataset.word=word; el.onclick=function(){selectWord(el);};
+    document.getElementById('wordrow').appendChild(el);
+  };
+  document.getElementById('bin-'+cat).appendChild(chip);
+}
+
+/* ================== TF + MC ================== */
+const TF = [
+  ["Sokha does his clothes shopping at the mall.", "false"],
+  ["The red jacket from the 1970s has a very large collar.", "true"],
+  ["The green coat from the 1980s has shoulder pads.", "true"],
+  ["In the 1990s, everyone wore jeans, even grandparents and children.", "true"],
+  ["Sokha buys new clothes because they are better for the planet.", "false"]
+];
+const MC = [
+  ["Where does Sokha buy his clothes?", ["At a vintage shop","At the mall","At school"], 0],
+  ["What kind of collar does the 1970s red jacket have?", ["A tiny collar","A very large collar","No collar"], 1],
+  ["What makes the 1980s coat's shoulders look very wide?", ["Big buttons","Long sleeves","Shoulder pads"], 2],
+  ["Which clothes were the most popular in the world in the 1990s?", ["Jeans","Dresses","Hats"], 0],
+  ["Why does Sokha like organic cotton?", ["It helps the planet","It is shiny","It is heavy"], 0],
+  ["What does Uncle Dara say at the end?", ["Buy new clothes every year","A good jacket never goes out of style","Fashion never changes"], 1]
+];
+function buildChoice(){
+  const tf=document.getElementById('tf');
+  TF.forEach(function(item,i){
+    const el=document.createElement('div'); el.className='q';
+    el.dataset.a=item[1];
+    let o='';
+    ["TRUE","FALSE"].forEach(function(v){
+      o+='<button data-v="'+(v==='TRUE'?'true':'false')+'" data-q="tf'+i+'">'+v+'</button>';
+    });
+    el.innerHTML='<div class="t"><span class="num">'+(i+1)+'.</span> '+item[0]+'</div><div class="opt">'+o+'</div>';
+    tf.appendChild(el);
+  });
+  document.querySelectorAll('#tf .opt button').forEach(function(b){ b.onclick=function(){ pick(b); }; });
+  const mc=document.getElementById('mc');
+  MC.forEach(function(item,i){
+    const el=document.createElement('div'); el.className='q';
+    el.dataset.a=item[2];
+    let o='';
+    item[1].forEach(function(opt,oi){
+      o+='<button data-v="'+oi+'" data-q="mc'+i+'">'+('ABC'[oi])+': '+opt+'</button>';
+    });
+    el.innerHTML='<div class="t"><span class="num">'+(i+1)+'.</span> '+item[0]+'</div><div class="opt">'+o+'</div>';
+    mc.appendChild(el);
+  });
+  document.querySelectorAll('#mc .opt button').forEach(function(b){ b.onclick=function(){ pick(b); }; });
+}
+function pick(b){
+  if(!state.started){ alert("Press START first!"); return; }
+  const group=b.dataset.q;
+  document.querySelectorAll('button[data-q="'+group+'"]').forEach(function(x){ x.classList.remove('sel'); });
+  b.classList.add('sel');
+}
+
+/* ================== TIMER ================== */
+function startTimer(){
+  timerId=setInterval(function(){
+    elapsed++;
+    const remain=TOTAL_MIN*60 - elapsed;
+    if(remain<=0){ clearInterval(timerId); finishQuiz(true); return; }
+    const m=Math.floor(remain/60), s=remain%60;
+    document.getElementById('timer').textContent=(m<10?'0':'')+m+':'+(s<10?'0':'')+s;
+    document.getElementById('timerBox').classList.toggle('low', remain<=300);
+  },1000);
+}
+
+/* ================== START ================== */
+function startQuiz(){
+  const name=document.getElementById('inName').value.trim();
+  if(!name){ alert("Please type your name first."); return; }
+  state.name=name; state.cls=document.getElementById('inClass').value.trim()||"";
+  state.started=true;
+  document.getElementById('welcome').style.display='none';
+  document.getElementById('submitbar').style.display='block';
+  document.getElementById('subTitle').textContent=name+" · 100 pts · 30 min";
+  startTimer();
+  window.scrollTo(0,0);
+}
+
+/* ================== GRADING ==================
+   Each section = fixed point cap (sum = 100). Section score = round(correct/total * cap).
+   Handles double-blank questions cleanly. */
+const CAPS = {s1:10, s2:30, s3:10, s4:10, s5:16, s6:12, s7:12};
+function grade(){
+  const correct={s1:0,s2:0,s3:0,s4:0,s5:0,s6:0,s7:0};
+  const total ={s1:0,s2:0,s3:0,s4:0,s5:0,s6:0,s7:0};
+  document.querySelectorAll('select[data-a]').forEach(function(sel){
+    const id=sel.closest('section').id; total[id]++;
+    if(sel.value===sel.dataset.a) correct[id]++;
+  });
+  total.s2=SORT_WORDS.length;
+  SORT_WORDS.forEach(function(w){ if(bins[w[1]].indexOf(w[0])>-1) correct.s2++; });
+  document.querySelectorAll('#tf .q,#mc .q').forEach(function(q){
+    const id=q.closest('section').id; total[id]++;
+    const selbtn=q.querySelector('button.sel');
+    if(selbtn){
+      const ans = (id==='s6') ? String(parseInt(q.dataset.a,10)) : q.dataset.a;
+      if(selbtn.dataset.v===ans) correct[id]++;
+    }
+  });
+  const sec={}, ptsOf={};
+  for(const k in CAPS){
+    sec[k]   = total[k] ? Math.round(correct[k]/total[k]*CAPS[k]) : 0;
+    ptsOf[k] = (total[k]? Math.round(correct[k]):0)+"/"+total[k];
+  }
+  let totalPts=0; for(const k in CAPS) totalPts+=sec[k];
+  totalPts=Math.max(0,Math.min(100,totalPts));
+  return {sec:sec,total:totalPts,ptsOf:ptsOf};
+}
+
+/* ================== SUBMIT ================== */
+function finishQuiz(autofinish){
+  if(state.submitted) return;
+  state.submitted=true;
+  clearInterval(timerId);
+  const g=grade();
+  const pct=Math.round(g.total/100*100);
+  state.sec=Math.floor(elapsed/60)+":"+(elapsed%60<10?'0':'')+(elapsed%60);
+  // collect answers for the sheet
+  const answers=[];
+  document.querySelectorAll('select[data-a]').forEach(function(s){answers.push(s.value||"(empty)");});
+  document.querySelectorAll('#tf .q,#mc .q').forEach(function(q){
+    const b=q.querySelector('button.sel'); answers.push(b?b.dataset.v:"(none)");
+  });
+  const details="Name: "+state.name+" | Class: "+state.cls+" | Time: "+state.sec+
+    " | S1:"+g.sec.s1+" S2:"+g.sec.s2+" S3:"+g.sec.s3+" S4:"+g.sec.s4+" S5:"+g.sec.s5+" S6:"+g.sec.s6+" S7:"+g.sec.s7;
+  if(GOOGLE_WEBAPP_URL){
+    try{
+      fetch(GOOGLE_WEBAPP_URL,{method:'POST',mode:'no-cors',
+        headers:{'Content-Type':'text/plain;charset=utf-8'},
+        body:JSON.stringify({name:state.name,cls:state.cls,percent:pct,points:g.total,
+          sections:[g.sec.s1,g.sec.s2,g.sec.s3,g.sec.s4,g.sec.s5,g.sec.s6,g.sec.s7],
+          answers:answers,details:details})});
+    }catch(e){}
+  }
+  buildReview();
+  showResult(g.total,pct,g,autofinish);
+}
+function showResult(points,pct,g,autofinish){
+  const em=['','😅','😅','😅','🙂','🙂','😃','😃','🤩','🤩','🏆'];
+  document.getElementById('resEmoji').textContent=em[Math.min(10,Math.floor(pct/10)+(pct>=100?1:0))]||'🎉';
+  document.getElementById('resScore').textContent=points;
+  document.getElementById('resTitle').textContent=autofinish?("Time's up! ⏰"):"Well done!";
+  document.getElementById('resSub').textContent="points out of 100";
+  document.getElementById('resSum').innerHTML=
+    "⭐ <b>Per exercise:</b><br>"+
+    "1. Vocab verbs "+g.sec.s1+"/10 · 2. Sort "+g.sec.s2+"/30 · 3. New words "+g.sec.s3+"/10<br>"+
+    "4. True/False "+g.sec.s4+"/10 · 5. Report "+g.sec.s5+"/16 · 6. Reading "+g.sec.s6+"/12<br>"+
+    "7. Word match "+g.sec.s7+"/12<br><b>TOTAL: "+points+"/100 ("+pct+"%)</b>"+
+    "<br><span style='font-size:.78rem;color:#5a6672'>Your answers were sent to your teacher's Google Sheet.</span>";
+  let note;
+  if(pct>=90)note="🌟 Outstanding! You're a real fashion expert.";
+  else if(pct>=70)note="👍 Good work! Open the review to see what to fix.";
+  else if(pct>=50)note="🙂 Nice try! Read the report and re-check your answers.";
+  else note="💪 Let's revise together, then try again!";
+  document.getElementById('resNote').textContent=note;
+  document.getElementById('resultModal').style.display='flex';
+}
+
+/* ================== REVIEW ================== */
+const SECTIONS = [
+  ["s1","1. Verbs for clothes","s1"],
+  ["s3","3. New vocabulary sentences","s3"],
+  ["s5","5. Complete the report","s5"],
+  ["s7","7. Reading vocab — word match","s7"]
+];
+const CORRECT_LABELS = function(id, sel){
+  // human-readable correct answer label
+  return sel.dataset.a;
+};
+const KEY={
+  sort:{parts:["collar","cuff","sleeve","pocket","button","belt","hem"],
+        materials:["silk","cotton","denim","leather","wool"],
+        look:["patterned","plain","tight","baggy"]}
+};
+function buildReview(){
+  let html='<section class="card"><h2><span class="bnum">🔍</span> YOUR ANSWER REVIEW</h2><div class="inst">Below: your answer (✗ crossed = wrong), the <b>correct answer</b> (green), and the points you earned.</div>';
+
+  // ---- Select-based sections (1,3,5,7) ----
+  ['s1','s3','s5','s7'].forEach(function(sid){
+    const sec=document.getElementById(sid);
+    html+='<h3 class="rvhead" style="color:#2b4a7a;margin:14px 0 6px;">'+sec.querySelector('h2').textContent.replace(/\s*\(\s*\d+\s*pts\s*\)\s*$/i,'')+'</h3>';
+    sec.querySelectorAll('select[data-a]').forEach(function(sel){
+      const ok = sel.value===sel.dataset.a;
+      const qtext = sel.parentElement.querySelector('.t').textContent.trim();
+      const yours = sel.value||"(not answered)";
+      html+='<div class="rv '+(ok?'good2':'wrong')+'">'+qtext+
+        '<div class="row"><span class="yours '+(ok?'ok':'no')+'">Your answer: '+yours+'</span>'+
+        '<span class="rvmark '+(ok?'ok':'no')+'">'+(ok?'✓':'✗')+'</span></div>'+
+        (ok?'':'<div class="row"><span class="key">Correct: '+sel.dataset.a+'</span></div>')+
+        '</div>';
+    });
+  });
+
+  // ---- Section 4 TF ----
+  html+='<h3 class="rvhead" style="color:#2b4a7a;margin:14px 0 6px;">4. Reading — True / False</h3>';
+  document.querySelectorAll('#tf .q').forEach(function(q){
+    const ok=q.querySelector('button.sel') && q.querySelector('button.sel').dataset.v===q.dataset.a;
+    const yours=q.querySelector('button.sel')?(q.querySelector('button.sel').dataset.v==='true'?'TRUE':'FALSE'):"(not answered)";
+    html+='<div class="rv '+(ok?'good2':'wrong')+'">'+q.querySelector('.t').textContent.trim()+
+      '<div class="row"><span class="yours '+(ok?'ok':'no')+'">Your answer: '+yours+'</span><span class="rvmark '+(ok?'ok':'no')+'">'+(ok?'✓':'✗')+'</span></div>'+
+      (ok?'':'<div class="row"><span class="key">Correct: '+(q.dataset.a==='true'?'TRUE':'FALSE')+'</span></div>')+'</div>';
+  });
+
+  // ---- Section 6 MC ----
+  html+='<h3 class="rvhead" style="color:#2b4a7a;margin:14px 0 6px;">6. Reading — comprehension</h3>';
+  document.querySelectorAll('#mc .q').forEach(function(q){
+    const idx=parseInt(q.dataset.a,10);
+    const chosen=q.querySelector('button.sel');
+    const ok=chosen && parseInt(chosen.dataset.v,10)===idx;
+    const btnList=q.querySelectorAll('.opt button');
+    function optText(i){ if(!btnList[i]) return ""; return btnList[i].textContent.replace(/^[ABC]:\s*/,""); }
+    const yours=chosen ? ('ABC'.charAt(parseInt(chosen.dataset.v,10))+'. '+optText(parseInt(chosen.dataset.v,10))) : "(not answered)";
+    html+='<div class="rv '+(ok?'good2':'wrong')+'">'+q.querySelector('.t').textContent.trim()+
+      '<div class="row"><span class="yours '+(ok?'ok':'no')+'">Your answer: '+yours+'</span><span class="rvmark '+(ok?'ok':'no')+'">'+(ok?'✓':'✗')+'</span></div>'+
+      (ok?'':'<div class="row"><span class="key">Correct: '+('ABC'.charAt(idx))+'. '+optText(idx)+'</span></div>')+'</div>';
+  });
+
+  // ---- Section 2 sort ----
+  html+='<h3 class="rvhead" style="color:#2b4a7a;margin:14px 0 6px;">2. Sort the words (correct boxes)</h3>';
+  ['parts','materials','look'].forEach(function(cat){
+    const label=cat==='parts'?'👕 Parts of clothes':(cat==='materials'?'🧵 Materials':'✨ Look and fit');
+    let okWords=0;
+    KEY.sort[cat].forEach(function(w){ if(bins[cat].indexOf(w)>-1) okWords++; });
+    html+='<div class="rv '+(okWords===KEY.sort[cat].length?'good2':'wrong')+'">'+label+
+      '<div class="row"><span class="yours '+(okWords===KEY.sort[cat].length?'ok':'no')+'">You placed: '+(bins[cat].length?bins[cat].join(', '):"(none)")+'</span><span class="rvmark '+(okWords===KEY.sort[cat].length?'ok':'no')+'">'+(okWords===KEY.sort[cat].length?'✓':'✗')+'</span></div>'+
+      '<div class="row"><span class="key">Correct: '+KEY.sort[cat].join(', ')+'</span></div></div>';
+  });
+
+  html+='</section>';
+  document.getElementById('review').innerHTML=html;
+}
+function showReview(){
+  document.getElementById('resultModal').style.display='none';
+  const rv=document.getElementById('review');
+  rv.style.display='block';
+  rv.scrollIntoView({behavior:'smooth'});
+}
+
+/* ================== TEACHER MODE ================== */
+function teacherLogin(){
+  const p=prompt("Teacher password:");
+  if(p===null) return;
+  if(p===TEACHER_PASSWORD){
+    state.teacher=true;
+    document.getElementById('teachbar').style.display='block';
+    const b=document.getElementById('teacherBtn');
+    b.textContent="🔓 Exit Teacher"; b.style.background="#ffd23f"; b.style.color="#2b4a7a";
+    b.onclick=teacherLogout;
+    // highlight correct
+    document.querySelectorAll('select[data-a]').forEach(function(sel){ sel.style.borderColor="#2c7a2c"; });
+    document.querySelectorAll('#tf .q').forEach(function(q){
+      const b2=q.querySelector('button[data-v="'+q.dataset.a+'"]'); if(b2) b2.style.borderColor="#2c7a2c";
+    });
+    document.querySelectorAll('#mc .q').forEach(function(q){
+      const idx=parseInt(q.dataset.a,10); q.querySelectorAll('.opt button')[idx].style.borderColor="#2c7a2c";
+    });
+    document.querySelectorAll('.bin').forEach(function(bin){
+      const cat=bin.dataset.cat;
+      KEY.sort[cat].forEach(function(w){ if(bins[cat].indexOf(w)>-1) bin.classList.add('correct'); });
+    });
+    // full key panel
+    let panel=document.createElement('section'); panel.className='card'; panel.id='teachkey';
+    panel.innerHTML='<h2><span class="bnum">🔑</span> TEACHER ANSWER KEY</h2>'+
+      '<div class="inst"><b>1 (verbs):</b> fit · match · try on · wear · look good on</div>'+
+      '<div class="inst"><b>3 (new words):</b> belt · leather · silk · baggy · plain</div>'+
+      '<div class="inst"><b>5 (story):</b> vintage · large · shoulder pads · comfortable · clothes · organic · old · style</div>'+
+      '<div class="inst"><b>7 (word match):</b> vintage · shoulder pads · organic · style</div>'+
+      '<div class="inst"><b>2 (sort):</b> Parts='+KEY.sort.parts.join(', ')+'<br>Materials='+KEY.sort.materials.join(', ')+'<br>Look&fit='+KEY.sort.look.join(', ')+'</div>'+
+      '<div class="inst"><b>4 (T/F):</b> F · T · T · T · F &nbsp;&nbsp;<b>6 (comp):</b> A · B · C · A · A · B</div>';
+    document.querySelector('main').appendChild(panel);
+    window.scrollTo(0,document.body.scrollHeight);
+  } else { alert("Wrong password."); }
+}
+function teacherLogout(){
+  state.teacher=false;
+  document.getElementById('teachbar').style.display='none';
+  const b=document.getElementById('teacherBtn');
+  b.textContent="🔒 Teacher"; b.style.background="#fff"; b.style.color="#2b4a7a";
+  b.onclick=teacherLogin;
+  document.querySelectorAll('select[data-a]').forEach(function(s){ s.style.borderColor="#c8d2e2"; });
+  document.querySelectorAll('#tf .q button,#mc .q button').forEach(function(x){ x.style.borderColor=""; });
+  document.querySelectorAll('.bin').forEach(function(b3){ b3.classList.remove('correct'); });
+  const p=document.getElementById('teachkey'); if(p) p.remove();
+}
+
+/* ================== INIT ================== */
+buildSort();
+buildChoice();
+</script>
+</body>
+</html>

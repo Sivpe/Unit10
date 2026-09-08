@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit 10 · Changing Fashions — Lesson Slides</title>
+<style>
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;height:100%;}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    background:linear-gradient(135deg,#2b4a7a,#3b6bc0);color:#fff;overflow:hidden;}
+  .stage{position:relative;width:100%;height:100%;}
+  .slide{position:absolute;inset:0;padding:40px;display:none;flex-direction:column;justify-content:center;
+    max-width:1100px;margin:0 auto;animation:fade .4s ease;}
+  .slide.active{display:flex;}
+  @keyframes fade{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
+  /* header bar */
+  .hdr{position:fixed;top:0;left:0;right:0;z-index:10;display:flex;justify-content:space-between;
+    align-items:center;padding:14px 22px;font-size:.85rem;color:#dfe7f5;}
+  .hdr .brand{font-weight:800;letter-spacing:.5px;}
+  .hdr .step{opacity:.85;}
+  /* controls */
+  .nav{position:fixed;bottom:18px;right:18px;z-index:20;display:flex;gap:10px;}
+  .nav button{background:#fff;color:#2b4a7a;border:none;border-radius:12px;padding:12px 18px;font-size:1.1rem;
+    font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);}
+  .nav button:active{transform:scale(.96);}
+  .nav button:disabled{opacity:.35;}
+  .nav .flat{background:rgba(255,255,255,.15);color:#fff;font-size:1.2rem;padding:12px 16px;}
+  /* progress dots */
+  .dots{position:fixed;bottom:20px;left:20px;z-index:20;display:flex;gap:6px;flex-wrap:wrap;max-width:60%;}
+  .dots span{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;}
+  .dots span.on{background:#fff;transform:scale(1.4);}
+  /* typography */
+  .kicker{font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#ffd23f;font-weight:800;margin-bottom:8px;}
+  h1{font-size:3rem;margin:0 0 10px;line-height:1.1;}
+  h2{font-size:1.9rem;margin:0 0 6px;}
+  h3{font-size:1.2rem;margin:0 0 14px;color:#ffd23f;}
+  p{font-size:1.2rem;line-height:1.5;margin:8px 0;color:#eef2fb;}
+  .lead{font-size:1.5rem;line-height:1.5;max-width:780px;}
+  ul{font-size:1.15rem;line-height:1.6;color:#eef2fb;padding-left:26px;}
+  li{margin:9px 0;}
+  b{color:#ffd23f;}
+  .card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:22px;margin:12px 0;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:16px;}
+  .tile{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:18px;}
+  .tile .n{font-size:2rem;font-weight:900;color:#ffd23f;}
+  .tile small{font-size:.85rem;opacity:.9;}
+  .tag{display:inline-block;background:#c85a2a;border-radius:20px;padding:4px 14px;font-size:.9rem;font-weight:700;margin:4px;}
+  .tag.g{background:#1c7a3f;} .tag.b{background:#2b4a7a;} .tag.y{background:#b8860b;color:#fff;}
+  .big{font-size:2.4rem;font-weight:900;}
+  table{width:100%;border-collapse:collapse;color:#eef2fb;font-size:1.05rem;}
+  td,th{border:1px solid rgba(255,255,255,.25);padding:10px 12px;text-align:left;}
+  th{background:rgba(255,255,255,.15);}
+  .note{font-size:.95rem;color:#c9d4ea;font-style:italic;}
+  .icon{font-size:2.6rem;}
+  .center{text-align:center;}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="brand">UNIT 10 · CHANGING FASHIONS</div>
+  <div class="step" id="stepLabel">Title</div>
+</div>
+
+<div class="stage" id="stage">
+
+<!-- TITLE -->
+<section class="slide active" data-step="Title">
+  <div class="kicker">Go Beyond 3 · pages 104–105 · Secondary 8</div>
+  <h1>🧥 Changing<br>Fashions</h1>
+  <p class="lead">Talk about how fashion has changed from the <b>1970s</b> to <b>today</b>.</p>
+  <p style="margin-top:22px;"><span class="tag g">Lesson 1 · pp. 104</span><span class="tag b">Lesson 2 · pp. 105</span><span class="tag y">Double lesson — 90 min</span></p>
+  <p class="note">By the end, you can: use clothes vocabulary &amp; verbs · read a report about fashions · give your opinion.</p>
+</section>
+
+<!-- OBJECTIVES -->
+<section class="slide" data-step="Goals">
+  <div class="kicker">Today's objectives</div>
+  <h2>🎯 What you will be able to do</h2>
+  <div class="grid">
+    <div class="tile"><div class="n">Vocab</div><small>names clothes, parts, materials &amp; look/fit</small></div>
+    <div class="tile"><div class="n">Verbs</div><small>fit · match · try on · wear · look good on</small></div>
+    <div class="tile"><div class="n">Reading</div><small>understand the 1970s–2000s fashion report</small></div>
+    <div class="tile"><div class="n">Speaking</div><small>give your opinion about clothes</small></div>
+  </div>
+  <div class="card"><b>Key question:</b> What is YOUR style — and how is it different from your parents' and grandparents'?</div>
+</section>
+
+<!-- WARM UP -->
+<section class="slide" data-step="Warm-up">
+  <div class="kicker">⏱ 0–5 min</div>
+  <h2>🔥 Warm-up — "Guess the decade!"</h2>
+  <p>Look at these 4 ideas. Shout the decade + one word to describe the clothes:</p>
+  <div class="grid">
+    <div class="tile"><div class="icon">🕺</div><small><b>70s</b> — bright, flared pants, big collars</small></div>
+    <div class="tile"><div class="icon">🎸</div><small><b>80s</b> — punk, leather, spiky hair</small></div>
+    <div class="tile"><div class="icon">👖</div><small><b>90s</b> — denim, hoodies, sneakers</small></div>
+    <div class="tile"><div class="icon">🌱</div><small><b>2000s+</b> — eco-friendly, organic cotton</small></div>
+  </div>
+  <p style="margin-top:18px;">💬 <b>Icebreaker:</b> "What are you wearing right now? Compare with a photo of your parents!"</p>
+</section>
+
+<!-- BRAIN RACE -->
+<section class="slide" data-step="Brain race">
+  <div class="kicker">⏱ 5–12 min · Ex 1a</div>
+  <h2>⚡ Brain race — 3 minutes!</h2>
+  <p>Two teams. Write as many words as you can in 3 minutes.</p>
+  <div class="grid">
+    <div class="tile"><div class="icon">👕</div><b>Clothes &amp; footwear</b><br><small>e.g. pants, shirt, sneakers…</small></div>
+    <div class="tile"><div class="icon">👜</div><b>Accessories</b><br><small>e.g. belt, bag, scarf…</small></div>
+    <div class="tile"><div class="icon">⭐</div><b>Bonus point</b><br><small>for any part or material word (collar, denim!)</small></div>
+  </div>
+  <p class="note">👉 Word tennis: teacher says <b>pants</b>, student says <b>belt</b>, next says <b>socks</b>…</p>
+</section>
+
+<!-- VERBS -->
+<section class="slide" data-step="Verbs">
+  <div class="kicker">⏱ 12–22 min · Ex 1b</div>
+  <h2>🧩 The 5 magic verbs</h2>
+  <table>
+    <tr><th>verb</th><th>meaning</th><th>example</th></tr>
+    <tr><td><b>fit</b></td><td>be the right size</td><td>These jeans fit me.</td></tr>
+    <tr><td><b>match</b></td><td>colours go together</td><td>My scarf doesn't match my coat.</td></tr>
+    <tr><td><b>try on</b></td><td>test before buying</td><td>Can I try these shoes on?</td></tr>
+    <tr><td><b>wear</b></td><td>have on now</td><td>I always wear a scarf in winter.</td></tr>
+    <tr><td><b>look good on</b></td><td>suits a person</td><td>Those sunglasses look good on you!</td></tr>
+  </table>
+  <p class="note">👉 Then open the quiz on your phone and do the new verb sentences.</p>
+</section>
+
+<!-- CATEGORIES -->
+<section class="slide" data-step="Categories">
+  <div class="kicker">⏱ 22–35 min · Ex 2</div>
+  <h2>🗂 Sort the words into 3 boxes</h2>
+  <div class="grid">
+    <div class="tile"><div class="icon">👕</div><b>Parts of clothes</b><br><small>collar · sleeve · pocket · button · belt · hem · cuff</small></div>
+    <div class="tile"><div class="icon">🧵</div><b>Materials</b><br><small>silk · cotton · denim · leather · wool</small></div>
+    <div class="tile"><div class="icon">✨</div><b>Look &amp; fit</b><br><small>patterned · plain · tight · baggy · loose · big · small</small></div>
+  </div>
+  <p class="note">👉 Say it: <b>de-nim / pat-terned / col-lar</b> — tap the pronunciation drill.</p>
+</section>
+
+<!-- LISTEN REPORT -->
+<section class="slide" data-step="The report">
+  <div class="kicker">⏱ 35–50 min · Ex 3 + 4</div>
+  <h2>🎧 Listen &amp; read: the fashion report</h2>
+  <p>Listen once <b>without</b> your book: what is the <b>key word</b> for each decade?</p>
+  <div class="grid">
+    <div class="tile"><span class="tag">70s</span><br><small><b>bright &amp; flared</b></small></div>
+    <div class="tile"><span class="tag">80s</span><br><small><b>punk</b></small></div>
+    <div class="tile"><span class="tag">90s</span><br><small><b>denim &amp; grunge</b></small></div>
+    <div class="tile"><span class="tag">2000s</span><br><small><b>eco-friendly</b></small></div>
+  </div>
+  <p class="note">👉 Now open the quiz, tap <b>"▶ SHOW the reading text"</b> and answer the reading questions.</p>
+</section>
+
+<!-- PRONUNCIATION -->
+<section class="slide" data-step="Pronunciation">
+  <div class="kicker">⏱ 50–58 min · Ex 5</div>
+  <h2>🗣 t vs d — minimal pairs</h2>
+  <table>
+    <tr><th>/t/</th><th>/d/</th></tr>
+    <tr><td>tight</td><td>tied</td></tr>
+    <tr><td>coat</td><td>code</td></tr>
+    <tr><td>feet</td><td>feed</td></tr>
+    <tr><td>hat</td><td>had</td></tr>
+    <tr><td>white</td><td>wide</td></tr>
+  </table>
+  <p class="note">👉 Game: teacher says a word — class raises <b>one hand</b> for /t/, <b>both hands</b> for /d/.</p>
+</section>
+
+<!-- OPINION -->
+<section class="slide" data-step="Opinion">
+  <div class="kicker">⏱ 58–70 min · Ex 6 + 7</div>
+  <h2>💬 Give your opinion</h2>
+  <div class="card">
+    <p><b>Model:</b> "I don't like the '70s shirt <b>because</b> the collar's too big and I don't like patterned clothes."</p>
+    <p><b>Model:</b> "Actually, I like it. It's <b>different</b>."</p>
+  </div>
+  <p>⚖️ <b>Fashion judge mini-debate:</b> one pair gets a "❤️ LOVE IT" card, another a "😖 I HATE IT" card — argue over an outfit for 60 seconds!</p>
+</section>
+
+<!-- SPEAK -->
+<section class="slide" data-step="Speak">
+  <div class="kicker">⏱ 70–85 min · Ex 8</div>
+  <h2>🎤 Futurist fashion show — 2030s</h2>
+  <p>In groups design tomorrow's outfit. Present it in <b>60 seconds</b>:</p>
+  <ul>
+    <li>Give it a <b>name</b></li>
+    <li><b>Parts</b> of clothes &amp; <b>materials</b></li>
+    <li><b>Look &amp; fit</b> (tight, baggy, patterned?)</li>
+    <li><b>Accessories</b></li>
+  </ul>
+  <p>🏆 Vote for the best + most <b>eco-friendly</b> design.</p>
+</section>
+
+<!-- WRAP UP -->
+<section class="slide" data-step="Wrap-up">
+  <div class="kicker">⏱ 85–90 min</div>
+  <h2>✍️ Exit ticket &amp; homework</h2>
+  <div class="card">
+    <p class="big">Which decade fits your style best, and why?</p>
+    <p>Write <b>one sentence</b> before you leave.</p>
+  </div>
+  <p>📚 <b>Homework:</b> find a photo of your parents'/grandparents' style and write 3 sentences about it — or do <b>"Words &amp; Beyond", p. 139</b> (Workbook p. 112).</p>
+</section>
+
+<!-- EXTENSION 1 : VOCAB STRETCH -->
+<section class="slide" data-step="Extension · Vocab">
+  <div class="kicker">Extension activity · Early finishers / to stretch strong students</div>
+  <h2>🧠 Stretch 1 — "Upgrade your outfit"</h2>
+  <p>Take a basic sentence and upgrade it with <b>2–3</b> words from today's vocabulary:</p>
+  <div class="card">
+    <p><b>Basic:</b> "The man is wearing a shirt."</p>
+    <p><b>Upgraded:</b> "The man is wearing a <b>patterned</b> shirt with a <b>big collar</b> made of <b>denim</b>."</p>
+  </div>
+  <p>🎯 <b>Challenge:</b> try to use all <b>5 verbs</b> (fit, match, try on, wear, look good on) in ONE short story about going shopping. Who can fit all five in?</p>
+</section>
+
+<!-- EXTENSION 2 : DESIGN -->
+<section class="slide" data-step="Extension · Design">
+  <div class="kicker">Extension activity · Creative / group</div>
+  <h2>🎨 Stretch 2 — "Redesign the school uniform"</h2>
+  <p>Your uniform is out of fashion! In pairs, redesign it.</p>
+  <ul>
+    <li>Pick a <b>material</b> (denim? cotton? wool?) and a <b>fit</b> (tight, baggy, loose).</li>
+    <li>Add parts: collar, cuffs, pockets, belt.</li>
+    <li>Decide <b>patterned or plain</b>, and <b>bright or dark</b>.</li>
+  </ul>
+  <p>💬 Then present with <b>"I think… because…"</b>. Vote for the best design and the most practical one.</p>
+</section>
+
+<!-- EXTENSION 3 : MATCH UP / GAME -->
+<section class="slide" data-step="Extension · Game">
+  <div class="kicker">Extension activity · Whole-class game · 5–10 min</div>
+  <h2>🎮 Stretch 3 — "Fashion Pictionary / Charades"</h2>
+  <p>Teams of 4. One student mimes or draws a word from today's list — the team shouts the answer.</p>
+  <div class="grid">
+    <div class="tile"><div class="icon">🧥</div><small>collar</small></div>
+    <div class="tile"><div class="icon">🕶</div><small>try on sunglasses</small></div>
+    <div class="tile"><div class="icon">⏳</div><small>baggy pants</small></div>
+    <div class="tile"><div class="icon">🧵</div><small>silk scarf</small></div>
+  </div>
+  <p class="note">👉 <b>Rules:</b> no speaking while miming! 60 seconds per word, one point each. Say the word <b>and</b> its category for a bonus point.</p>
+</section>
+
+<!-- EXTENSION 4 : WRITING -->
+<section class="slide" data-step="Extension · Writing">
+  <div class="kicker">Extension activity · Writing / homework option</div>
+  <h2>✍️ Stretch 4 — "Decade designer" postcard</h2>
+  <p>Choose your favourite decade (70s, 80s, 90s or 2000s). Write a <b>postcard</b> to a friend describing the fashion then.</p>
+  <div class="card">
+    <p><i>"Dear Mara,<br>Here in the <b>1970s</b>, everyone wears <b>bright</b> clothes and <b>flared</b> pants with <b>big collars</b>. I'm wearing a <b>patterned</b> shirt and <b>platform</b> shoes. It's really fun!<br>Love, Dara"</i></p>
+  </div>
+  <p>🎯 Use at least <b>6 vocabulary words</b> and the correct tenses.</p>
+</section>
+
+<!-- EXTENSION 5 : SUSTAINABLE -->
+<section class="slide" data-step="Extension · Speaking">
+  <div class="kicker">Extension activity · Critical thinking / speaking</div>
+  <h2>🌍 Stretch 5 — "Eco-couture debate"</h2>
+  <p>Fashion today is worried about the planet. Discuss in groups:</p>
+  <ul>
+    <li>Why do people choose <b>non-leather</b> shoes and <b>organic cotton</b>?</li>
+    <li>Is <b>fast fashion</b> (cheap, new clothes every week) good or bad? Why?</li>
+    <li>What could be the "key word" for <b>the 2030s</b>? (e.g. recycled? smart? shared?)</li>
+  </ul>
+  <p class="note">👉 Sentence starter: <b>"I think the 2030s will be a decade of ______ because ______."</b></p>
+</section>
+
+<!-- ANSWER KEY -->
+<section class="slide" data-step="Answer key">
+  <div class="kicker">For the teacher</div>
+  <h2>🔑 Quick answer key</h2>
+  <div class="card" style="font-size:1rem;">
+    <p><b>Ex 1b:</b> try on · match · fit · wear · look good on</p>
+    <p><b>Ex 4:</b> waists, tight · collars · worn, pockets · sleeves · dark, colourful · jeans · patterned, silk · leather</p>
+    <p><b>Ex 5:</b> coat/code · feet/feed · hat/had · tight/tied · white/wide</p>
+    <p><b>Decades:</b> 70s bright&flared · 80s punk · 90s denim&grunge · 2000s eco-friendly</p>
+  </div>
+  <p class="note">Full key is inside the quiz — press the 🔒 Teacher button (password given in the plan).</p>
+</section>
+
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="flat" onclick="goto(-1)" id="prev">‹</button>
+  <button onclick="goto(1)" id="next">Next ›</button>
+</div>
+<div class="dots" id="dots"></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];
+let i=0;
+const dots=document.getElementById('dots');
+slides.forEach(function(s,k){ const d=document.createElement('span'); d.onclick=function(){go(k);}; dots.appendChild(d); });
+function go(n){
+  i=Math.max(0,Math.min(slides.length-1,n));
+  slides.forEach(function(s,k){ s.classList.toggle('active',k===i); });
+  [...dots.children].forEach(function(d,k){ d.classList.toggle('on',k===i); });
+  document.getElementById('stepLabel').textContent=slides[i].dataset.step;
+  document.getElementById('prev').disabled=(i===0);
+  document.getElementById('next').textContent=(i===slides.length-1)?"Restart ↻":"Next ›";
+}
+function goto(d){ if(i===slides.length-1 && d>0){go(0);}else{go(i+d);} }
+document.addEventListener('keydown',function(e){ if(e.key==='ArrowRight')go(i+1); if(e.key==='ArrowLeft')go(i-1); });
+go(0);
+</script>
+</body>
+</html>
